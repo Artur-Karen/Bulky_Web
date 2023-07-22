@@ -1,5 +1,7 @@
 ﻿using Bulky.DataAccess.Repo.IRepo;
 using Bulky.Models;
+using Bulky.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
 using System.Diagnostics;
@@ -7,6 +9,8 @@ using System.Diagnostics;
 namespace BulkyWeb.Areas.Customer.Controllers
 {
     [Area("Customer")]
+    //[Authorize(Roles = SD.Role_Admin)]
+    //[Authorize(Roles =SD.Role_Customer)]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -23,7 +27,7 @@ namespace BulkyWeb.Areas.Customer.Controllers
             IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category");
             return View(productList);
         }
-
+        
         public IActionResult Details(int id)
         {
             Product product = _unitOfWork.Product.Get(u=>u.Id==id, includeProperties: "Category");

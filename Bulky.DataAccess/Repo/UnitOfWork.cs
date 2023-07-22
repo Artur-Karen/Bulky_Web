@@ -1,5 +1,5 @@
-﻿using Bulky.Data;
-using Bulky.DataAccess.Repo.IRepo;
+﻿using Bulky.DataAccess.Repo.IRepo;
+using Bulky.DataAcess.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
